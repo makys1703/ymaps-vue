@@ -5,3 +5,7 @@ import MapPage from '@/pages/MapPage.vue';
 <template>
   <MapPage />
 </template>
+
+<style>
+@import "tailwindcss";
+</style>

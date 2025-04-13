@@ -193,7 +193,3 @@ watch(polygon.value, () => {
 
 const map = shallowRef<null | YMap>(null);
 </script>
-
-<style>
-@import "tailwindcss";
-</style>
