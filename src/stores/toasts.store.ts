@@ -19,8 +19,8 @@ export const useToastsStore = defineStore('toasts', {
     addErrorToast({ id, text }: IAddErrorToast) {
       this.toasts.push({
         id,
-        title: TITLE_ERROR,
         text,
+        title: TITLE_ERROR,
         error: true
       });
     }

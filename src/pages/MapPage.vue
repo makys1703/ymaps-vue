@@ -1,7 +1,7 @@
 <template>
   <yandex-map v-model="map" :settings="{
     location: {
-      center: [37.617644, 55.755819],
+      center: MAP_CENTER_COORDS,
       zoom: 10
     },
   }" width="100%" height="100vh">
@@ -96,6 +96,7 @@ import { usePointsStore, useToastsStore, usePolygonStore } from '@/stores';
 import type { YMap, LngLat } from '@yandex/ymaps3-types';
 import { INITIAL_POLYGON_DATA } from '@/stores/constants';
 
+const MAP_CENTER_COORDS: LngLat = [37.617644, 55.755819];
 
 const pointsStore = usePointsStore();
 const { isReady, lastClickedPoint, lastNearestPoint } = storeToRefs(pointsStore);

@@ -32,9 +32,9 @@ export const usePointsStore = defineStore('points', {
     addErrorPoint({ id, clickedPoint, errorMessage }: IAddErrorPoint) {
       this.points.push({
         id,
+        clickedPoint,
         title: TITLE_ERROR,
         text: errorMessage,
-        clickedPoint,
         error: true
       });
     }
