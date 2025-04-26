@@ -79,7 +79,6 @@ import { shallowRef, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { findNearest, isPointInPolygon, getDistance, convertDistance } from 'geolib';
 import { PointError } from '@/shared/enums';
-import { generateId } from '@/shared/utils';
 import AppToastList from '@/components/AppToastList.vue';
 import AppExpandRange from '@/components/AppExpandRange.vue';
 import {
@@ -139,7 +138,7 @@ const drawDirectRoute = async (point: LngLat) => {
     const { title, text } = await getPlaceInfo(point);
     const nearestPoint = findNearest(point, polygonData.value) as LngLat;
     const distance = getDirectDistance(nearestPoint, point);
-    const id = generateId(point);
+    const id = crypto.randomUUID();
 
     pointsStore.addPoint({
       id,
@@ -158,7 +157,7 @@ const drawDirectRoute = async (point: LngLat) => {
     });
 
   } catch(error: unknown) {
-    const id = generateId(point);
+    const id = crypto.randomUUID();
 
     if (error instanceof Error) {
       pointsStore.addErrorPoint({
@@ -176,7 +175,7 @@ const drawDirectRoute = async (point: LngLat) => {
     }
 
     pointsStore.addErrorPoint({
-      id: generateId(point),
+      id,
       errorMessage: PointError.Unknown,
       clickedPoint: point
     });
